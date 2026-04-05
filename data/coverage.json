@@ -1,6 +1,24 @@
 {
-  "mcp_name": "Denmark Organic Regen MCP",
+  "mcp_name": "Danish Organic and Regenerative MCP",
   "jurisdiction": "DK",
   "build_date": "2026-04-05",
-  "status": "template — data not yet populated"
+  "status": "populated",
+  "record_counts": {
+    "organic_standards": 10,
+    "permitted_inputs": 15,
+    "conversion_rules": 5,
+    "cover_crops": 10,
+    "biodiversity_guidance": 8,
+    "soil_health": 8,
+    "search_index_entries": 64
+  },
+  "total_records": 56,
+  "data_sources": [
+    "Landbrugsstyrelsen Økologivejledningen",
+    "Økologisk Landsforening",
+    "ICROFS",
+    "SEGES Innovation",
+    "Aarhus Universitet",
+    "EU 2018/848"
+  ]
 }

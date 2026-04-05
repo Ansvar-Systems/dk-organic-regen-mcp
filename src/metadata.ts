@@ -8,18 +8,17 @@ export interface Meta {
 }
 
 const DISCLAIMER =
-  'This server provides general guidance on organic standards and regenerative practices. ' +
-  'Certification requirements vary by body — always check with your certifier (Soil Association, ' +
-  'OF&G, etc.) before making management decisions. Cover crop and soil health data are indicative — ' +
-  'consult your agronomist for site-specific advice.';
+  'Data er vejledende. Kontakt Landbrugsstyrelsen for aktuelle økologiregler og tilskudssatser. ' +
+  'Certificeringskrav varierer — tjek altid med din kontrollør (Fødevarestyrelsen) før beslutninger. ' +
+  'Efterafgrøde- og jordsundhedsdata er indikative — kontakt din planteavlskonsulent for stedspecifik rådgivning.';
 
 export function buildMeta(overrides?: Partial<Meta>): Meta {
   return {
     disclaimer: DISCLAIMER,
     data_age: overrides?.data_age ?? 'unknown',
-    source_url: overrides?.source_url ?? 'https://www.legislation.gov.uk/eur/2018/848',
-    copyright: 'Data: Crown Copyright and certification body publications. Server: Apache-2.0 Ansvar Systems.',
-    server: 'dk-organic-regen-mcp',
+    source_url: overrides?.source_url ?? 'https://lbst.dk/landbrug/oekologi/',
+    copyright: 'Data: Landbrugsstyrelsen, Økologisk Landsforening, ICROFS, SEGES Innovation, Aarhus Universitet. Server: Apache-2.0 Ansvar Systems.',
+    server: 'Danish Organic and Regenerative MCP',
     version: '0.1.0',
     ...overrides,
   };
