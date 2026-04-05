@@ -50,7 +50,7 @@ function initSchema(db: BetterSqlite3.Database): void {
       category TEXT,
       eu_regulation_ref TEXT,
       additional_to_eu INTEGER DEFAULT 0,
-      jurisdiction = 'DK'
+      jurisdiction TEXT DEFAULT 'DK'
     );
 
     CREATE TABLE IF NOT EXISTS permitted_inputs (
@@ -61,7 +61,7 @@ function initSchema(db: BetterSqlite3.Database): void {
       conditions TEXT,
       max_rate TEXT,
       derogation_available INTEGER,
-      jurisdiction = 'DK'
+      jurisdiction TEXT DEFAULT 'DK'
     );
 
     CREATE TABLE IF NOT EXISTS conversion_rules (
@@ -72,7 +72,7 @@ function initSchema(db: BetterSqlite3.Database): void {
       in_conversion_marketing TEXT,
       support_available TEXT,
       conditions TEXT,
-      jurisdiction = 'DK'
+      jurisdiction TEXT DEFAULT 'DK'
     );
 
     CREATE TABLE IF NOT EXISTS cover_crops (
@@ -85,7 +85,7 @@ function initSchema(db: BetterSqlite3.Database): void {
       biomass_t_ha REAL,
       good_before TEXT,
       purpose TEXT,
-      jurisdiction = 'DK'
+      jurisdiction TEXT DEFAULT 'DK'
     );
 
     CREATE TABLE IF NOT EXISTS biodiversity_guidance (
@@ -96,7 +96,7 @@ function initSchema(db: BetterSqlite3.Database): void {
       creation_cost_per_ha REAL,
       management_obligation_years INTEGER,
       grant_available TEXT,
-      jurisdiction = 'DK'
+      jurisdiction TEXT DEFAULT 'DK'
     );
 
     CREATE TABLE IF NOT EXISTS soil_health (
@@ -107,7 +107,7 @@ function initSchema(db: BetterSqlite3.Database): void {
       management_practices TEXT,
       improvement_timeline TEXT,
       soil_type TEXT,
-      jurisdiction = 'DK'
+      jurisdiction TEXT DEFAULT 'DK'
     );
 
     CREATE VIRTUAL TABLE IF NOT EXISTS search_index USING fts5(
@@ -120,8 +120,8 @@ function initSchema(db: BetterSqlite3.Database): void {
     );
 
     INSERT OR IGNORE INTO db_metadata (key, value) VALUES ('schema_version', '1.0');
-    INSERT OR IGNORE INTO db_metadata (key, value) VALUES ('mcp_name', 'UK Organic & Regenerative MCP');
-    INSERT OR IGNORE INTO db_metadata (key, value) VALUES ('jurisdiction = 'DK');
+    INSERT OR IGNORE INTO db_metadata (key, value) VALUES ('mcp_name', 'Denmark Organic Regen MCP');
+    INSERT OR IGNORE INTO db_metadata (key, value) VALUES ('jurisdiction', 'DK');
   `);
 }
 
