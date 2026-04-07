@@ -1,4 +1,5 @@
 import { buildMeta } from '../metadata.js';
+import { buildCitation } from '../citation.js';
 import { validateJurisdiction } from '../jurisdiction.js';
 import type { Database } from '../db.js';
 
@@ -45,5 +46,12 @@ export function handleGetPermittedInputs(db: Database, args: PermittedInputsArgs
       derogation_available: r.derogation_available === 1,
     })),
     _meta: buildMeta({ source_url: 'https://www.legislation.gov.uk/eur/2018/848' }),
+    _citation: buildCitation(
+      `inputs:${args.input_type}`,
+      `Permitted inputs: ${args.input_type}`,
+      'get_permitted_inputs',
+      { input_type: args.input_type },
+      'https://www.legislation.gov.uk/eur/2018/848',
+    ),
   };
 }

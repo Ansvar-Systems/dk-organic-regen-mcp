@@ -1,4 +1,5 @@
 import { buildMeta } from '../metadata.js';
+import { buildCitation } from '../citation.js';
 import { validateJurisdiction } from '../jurisdiction.js';
 import type { Database } from '../db.js';
 
@@ -53,5 +54,12 @@ export function handleGetSoilHealthGuidance(db: Database, args: SoilHealthArgs) 
       soil_type: r.soil_type,
     })),
     _meta: buildMeta({ source_url: 'https://ahdb.org.uk/knowledge-library/soil-health' }),
+    _citation: buildCitation(
+      `soil-health:${args.indicator ?? args.soil_type ?? 'all'}`,
+      `Soil health guidance${args.indicator ? `: ${args.indicator}` : ''}`,
+      'get_soil_health_guidance',
+      { ...(args.indicator ? { indicator: args.indicator } : {}), ...(args.soil_type ? { soil_type: args.soil_type } : {}) },
+      'https://ahdb.org.uk/knowledge-library/soil-health',
+    ),
   };
 }
