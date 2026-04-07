@@ -1,4 +1,5 @@
 import { buildMeta } from '../metadata.js';
+import { buildCitation } from '../citation.js';
 import { validateJurisdiction } from '../jurisdiction.js';
 import type { Database } from '../db.js';
 
@@ -45,5 +46,12 @@ export function handleGetConversionProcess(db: Database, args: ConversionArgs) {
       conditions: r.conditions,
     })),
     _meta: buildMeta({ source_url: 'https://www.legislation.gov.uk/eur/2018/848' }),
+    _citation: buildCitation(
+      `conversion:${args.farm_type}`,
+      `Organic conversion: ${args.farm_type}`,
+      'get_conversion_process',
+      { farm_type: args.farm_type },
+      'https://www.legislation.gov.uk/eur/2018/848',
+    ),
   };
 }

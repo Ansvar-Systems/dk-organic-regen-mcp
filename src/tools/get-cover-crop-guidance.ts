@@ -1,4 +1,5 @@
 import { buildMeta } from '../metadata.js';
+import { buildCitation } from '../citation.js';
 import { validateJurisdiction } from '../jurisdiction.js';
 import type { Database } from '../db.js';
 
@@ -64,5 +65,12 @@ export function handleGetCoverCropGuidance(db: Database, args: CoverCropArgs) {
       purpose: r.purpose,
     })),
     _meta: buildMeta({ source_url: 'https://ahdb.org.uk/knowledge-library/cover-crops' }),
+    _citation: buildCitation(
+      `cover-crops:${args.purpose ?? args.season ?? 'all'}`,
+      `Cover crop guidance${args.purpose ? `: ${args.purpose}` : ''}`,
+      'get_cover_crop_guidance',
+      { ...(args.purpose ? { purpose: args.purpose } : {}), ...(args.season ? { season: args.season } : {}) },
+      'https://ahdb.org.uk/knowledge-library/cover-crops',
+    ),
   };
 }

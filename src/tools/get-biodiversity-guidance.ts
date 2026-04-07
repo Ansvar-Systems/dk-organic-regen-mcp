@@ -1,4 +1,5 @@
 import { buildMeta } from '../metadata.js';
+import { buildCitation } from '../citation.js';
 import { validateJurisdiction } from '../jurisdiction.js';
 import type { Database } from '../db.js';
 
@@ -53,5 +54,12 @@ export function handleGetBiodiversityGuidance(db: Database, args: BiodiversityAr
       grant_available: r.grant_available,
     })),
     _meta: buildMeta({ source_url: 'https://www.gov.uk/government/collections/biodiversity-net-gain' }),
+    _citation: buildCitation(
+      `biodiversity:${args.habitat_type ?? args.farm_feature ?? 'all'}`,
+      `Biodiversity guidance${args.habitat_type ? `: ${args.habitat_type}` : ''}`,
+      'get_biodiversity_guidance',
+      { ...(args.habitat_type ? { habitat_type: args.habitat_type } : {}), ...(args.farm_feature ? { farm_feature: args.farm_feature } : {}) },
+      'https://www.gov.uk/government/collections/biodiversity-net-gain',
+    ),
   };
 }
